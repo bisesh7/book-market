@@ -6,3 +6,7 @@
 .book-card-collpase-button {
   cursor: pointer;
 }
+
+.genre-select {
+  max-width: 20vw;
+}

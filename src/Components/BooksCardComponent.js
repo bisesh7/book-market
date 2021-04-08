@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   Button,
@@ -42,6 +42,17 @@ const BooksCardComponent = (props) => {
     console.log(props.id);
   };
 
+  // If there are multiple genres then we need to format them
+  const getFormattedGenre = (unformattedGenre) => {
+    const genres = unformattedGenre.split("|");
+    let formattedGenre = "";
+    genres.forEach((genre, index) => {
+      if (index !== genres.length - 1) formattedGenre += genre + ", ";
+      else formattedGenre += genre;
+    });
+    return formattedGenre;
+  };
+
   return (
     <Card className="book-card" key={props.key}>
       <CardImg
@@ -55,9 +66,15 @@ const BooksCardComponent = (props) => {
         <CardTitle tag="h5">
           <div className="d-flex justify-content-between">
             {props.title}
-            <small onClick={toggle} className="book-card-collpase-button">
-              &#9660;
-            </small>
+            {isOpen ? (
+              <small onClick={toggle} className="book-card-collpase-button">
+                &#9650;
+              </small>
+            ) : (
+              <small onClick={toggle} className="book-card-collpase-button">
+                &#9660;
+              </small>
+            )}
           </div>
         </CardTitle>
 
@@ -69,7 +86,10 @@ const BooksCardComponent = (props) => {
               Date Created: {getFormattedDate(props.published_date)} <br />
               Author: {props.author}
               <br />
-              Genre: {props.genre}
+              Genre:{" "}
+              {props.genre.includes("|")
+                ? getFormattedGenre(props.genre)
+                : props.genre}
             </small>
           </CardText>
         </Collapse>

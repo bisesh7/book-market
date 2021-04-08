@@ -6,7 +6,7 @@ const HomeComponent = (props) => {
   return (
     <div>
       <NavbarComponent />
-      <BooksDisplayComponent {...props} className="mt-3" />
+      <BooksDisplayComponent {...props} className="mt-3 mb-4" />
     </div>
   );
 };
