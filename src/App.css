@@ -1,0 +1,7 @@
+.book-card {
+  max-width: 20vw;
+}
+
+.book-card-collpase-button {
+  cursor: pointer;
+}

@@ -7,11 +7,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
+  Container,
 } from "reactstrap";
 
 const NavbarComponent = () => {
@@ -22,17 +18,24 @@ const NavbarComponent = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Book-Market</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="https://github.com/bisesh7/book-market">
-                Github
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
+        <Container>
+          <NavbarBrand href="/">Book-Market</NavbarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink href="https://github.com/bisesh7/book-market">
+                  Github
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/bisesh7/book-market">
+                  Cart
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Container>
       </Navbar>
     </div>
   );
