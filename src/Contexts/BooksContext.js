@@ -5,10 +5,6 @@ import booksJSON from "../Books/book_set.json";
 export const BooksContext = createContext();
 
 const BooksContextProvider = (props) => {
-  useEffect(() => {
-    console.log(books);
-  }, []);
-
   const [books, dispatch] = useReducer(BooksReducer, booksJSON);
 
   return (

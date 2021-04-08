@@ -14,10 +14,6 @@ const BooksCardComponent = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  useEffect(() => {
-    console.log(props);
-  }, []);
-
   // Creating number formatter.
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -41,8 +37,13 @@ const BooksCardComponent = (props) => {
     return month + "-" + day + "-" + year;
   };
 
+  const addToCardButtonHandler = (e) => {
+    e.preventDefault();
+    console.log(props.id);
+  };
+
   return (
-    <Card className="book-card">
+    <Card className="book-card" key={props.key}>
       <CardImg
         top
         width="100%"
@@ -74,7 +75,12 @@ const BooksCardComponent = (props) => {
         </Collapse>
         <br />
         {/* If stock is 0 we disable button */}
-        <Button size="sm" color="secondary" disabled={props.stock <= 0}>
+        <Button
+          size="sm"
+          color="secondary"
+          disabled={props.stock <= 0}
+          onClick={addToCardButtonHandler}
+        >
           Add to cart
         </Button>
       </CardBody>
