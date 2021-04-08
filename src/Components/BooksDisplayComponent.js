@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Container, CardColumns } from "reactstrap";
+import { BooksContext } from "../Contexts/BooksContext";
 import BooksCardComponent from "./BooksCardComponent";
 
 const BooksDisplayComponent = (props) => {
+  const { books } = useContext(BooksContext);
+
   useEffect(() => {
-    console.log(props);
-  }, []);
+    console.log(books);
+  }, [books]);
 
   return (
     <Container>
