@@ -39,7 +39,10 @@ const HomeComponent = (props) => {
             />
           </Col>
           <Col md="3">
-            <CartComponent {...props} className="cart" />
+            <strong>Cart</strong>
+            <div className="sticky-top cart">
+              <CartComponent {...props} />
+            </div>
           </Col>
         </Row>
       </Container>

@@ -13,10 +13,6 @@
   max-width: 20vw;
 }
 
-.cart {
-  margin-top: 55px;
-}
-
 .cart-image {
   width: 100%;
   height: auto;
@@ -28,4 +24,11 @@
 
 .disabled-button {
   color: silver;
+}
+
+.cart {
+  overflow-y: scroll;
+  height: 80vh;
+  width: 100%;
+  padding: 0px 10px 0px 0px;
 }

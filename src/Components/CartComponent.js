@@ -42,7 +42,6 @@ const CartComponent = (props) => {
 
   return (
     <div className={props.className}>
-      <strong>Cart</strong>
       <ListGroup className="mt-3 mb-3">{cartListGroupItems}</ListGroup>
       {cart.books.length ? (
         <small className="float-right">
