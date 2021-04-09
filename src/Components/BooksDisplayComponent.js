@@ -7,14 +7,20 @@ import BooksCardComponent from "./BooksCardComponent";
 const BooksDisplayComponent = (props) => {
   // Getting the books from context
   const { books } = useContext(BooksContext);
-  const [booksAccordingToGenre, setBooksAccordingToGenre] = useState(books);
+  const [booksAccordingToGenre, setBooksAccordingToGenre] = useState(
+    books.books
+  );
   const [genres, setGenres] = useState([]);
   const [genreOptions, setGenreOptions] = useState(null);
   const [genreSelected, setGenreSelected] = useState("all-genres");
 
+  useEffect(() => {
+    console.log(books);
+  }, [books]);
+
   // Set the genres
   useEffect(() => {
-    setGenres(getGenres(books));
+    setGenres(getGenres(books.books));
   }, [books]);
 
   // Generating the genres options for selecting genre
@@ -39,16 +45,16 @@ const BooksDisplayComponent = (props) => {
     let booksAccordingToGenre = [];
     // If there a particular genre is selected
     if (genreSelected !== "all-genres" && genreSelected !== "Others") {
-      booksAccordingToGenre = books.filter((book) =>
+      booksAccordingToGenre = books.books.filter((book) =>
         // Since book can have different genres
         book.genre.includes(genreSelected)
       );
     } else if (genreSelected === "Others") {
-      booksAccordingToGenre = books.filter(
+      booksAccordingToGenre = books.books.filter(
         (book) => book.genre === "(no genres listed)"
       );
     } else {
-      booksAccordingToGenre = books;
+      booksAccordingToGenre = books.books;
     }
 
     setBooksAccordingToGenre(booksAccordingToGenre);
@@ -159,6 +165,7 @@ const BooksDisplayComponent = (props) => {
           }}
           type="select"
           className="genre-select"
+          defaultValue="all-genres"
         >
           {genreOptions}
         </Input>

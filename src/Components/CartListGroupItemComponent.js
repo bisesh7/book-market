@@ -1,21 +1,30 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Col, ListGroupItem, Row } from "reactstrap";
+import { addToBooks, removeFromBooks } from "../Actions/BookActions";
 import { addToCart, removeFromCart } from "../Actions/CartActions";
+import { BooksContext } from "../Contexts/BooksContext";
 import { CartContext } from "../Contexts/CartContext";
 import { getNPRFromDollar } from "../Functions/getNPRFromDollar";
 
 const CartListGroupItem = (props) => {
   // Getting the cart from context
   const { cartDispatch } = useContext(CartContext);
+  const { booksDispatch } = useContext(BooksContext);
 
   const quantityDecreaseHandler = (e) => {
     e.preventDefault();
-    cartDispatch(removeFromCart(props.id));
+    if (props.quantity > 0) {
+      cartDispatch(removeFromCart(props.id));
+      booksDispatch(addToBooks(props.id));
+    }
   };
 
   const quantityIncreaseHandler = (e) => {
     e.preventDefault();
-    cartDispatch(addToCart(props.id));
+    if (props.stock > 0) {
+      cartDispatch(addToCart(props.id));
+      booksDispatch(removeFromBooks(props.id));
+    }
   };
 
   return (
@@ -37,7 +46,11 @@ const CartListGroupItem = (props) => {
                   -
                 </span>{" "}
                 <span
-                  className="cart-quantity-plus-button"
+                  className={
+                    props.stock === 0
+                      ? "cart-quantity-plus-button disabled-button"
+                      : "cart-quantity-plus-button"
+                  }
                   onClick={quantityIncreaseHandler}
                 >
                   +

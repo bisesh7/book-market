@@ -28,11 +28,6 @@ const NavbarComponent = () => {
                   Github
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/bisesh7/book-market">
-                  Cart
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>

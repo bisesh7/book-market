@@ -12,12 +12,11 @@ const CartComponent = (props) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    console.log(cart);
     let cartListGroupItems = [];
     let totalAmount = 0;
     if (cart.books.length) {
-      cart.books.forEach((bookInCart) => {
-        const book = books.find(
+      cart.books.forEach((bookInCart, index) => {
+        const book = books.books.find(
           (bookInBookList) => bookInBookList.id === bookInCart.bookId
         );
         const priceOfBook = book.price.substring(1, book.price.length);
@@ -31,6 +30,8 @@ const CartComponent = (props) => {
             quantity={bookInCart.quantity}
             price={book.price}
             id={book.id}
+            key={index}
+            stock={book.stock}
           />
         );
       });

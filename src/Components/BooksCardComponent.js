@@ -8,15 +8,16 @@ import {
   CardBody,
   Collapse,
 } from "reactstrap";
+import { removeFromBooks } from "../Actions/BookActions";
 import { addToCart } from "../Actions/CartActions";
-// import { BooksContext } from "../Contexts/BooksContext";
+import { BooksContext } from "../Contexts/BooksContext";
 import { CartContext } from "../Contexts/CartContext";
 import { getNPRFromDollar } from "../Functions/getNPRFromDollar";
 
 const BooksCardComponent = (props) => {
   // Getting the cart from context
   const { cart, cartDispatch } = useContext(CartContext);
-  // const { books } = useContext(BooksContext);
+  const { booksDispatch } = useContext(BooksContext);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,24 +35,25 @@ const BooksCardComponent = (props) => {
 
   const addToCardButtonHandler = (e) => {
     e.preventDefault();
-
     const add = () => {
       cartDispatch(addToCart(props.id));
+      booksDispatch(removeFromBooks(props.id));
     };
-
-    // Check if there are 5 different books in cart
-    if (cart.books.length === 5) {
-      // If the cart has five book but user has selected book in cart
-      if (cart.books.some((bookInCart) => bookInCart.bookId === props.id)) {
-        add();
+    if (props.stock > 0) {
+      // Check if there are 5 different books in cart
+      if (cart.books.length === 5) {
+        // If the cart has five book but user has selected book in cart
+        if (cart.books.some((bookInCart) => bookInCart.bookId === props.id)) {
+          add();
+        } else {
+          props.setAlertMessage(
+            "5 different books in in the cart. You cannot select more than 5 different books."
+          );
+          props.setAlertVisible(true);
+        }
       } else {
-        props.setAlertMessage(
-          "5 different books in in the cart. You cannot select more than 5 different books."
-        );
-        props.setAlertVisible(true);
+        add();
       }
-    } else {
-      add();
     }
   };
 

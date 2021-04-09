@@ -1,3 +1,5 @@
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../Actions/ActionTypes";
+
 const addBookToCart = (bookId, state) => {
   const updatedCart = [...state.books];
   const updatedItemIndex = updatedCart.findIndex(
@@ -19,7 +21,6 @@ const addBookToCart = (bookId, state) => {
 };
 
 const removeBookFromCart = (bookId, state) => {
-  console.log(bookId, state);
   const updatedCart = [...state.books];
   const updatedItemIndex = updatedCart.findIndex(
     (item) => item.bookId === bookId
@@ -39,9 +40,9 @@ const removeBookFromCart = (bookId, state) => {
 
 export const CartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case ADD_TO_CART:
       return addBookToCart(action.bookId, state);
-    case "REMOVE_FROM_CART":
+    case REMOVE_FROM_CART:
       return removeBookFromCart(action.bookId, state);
     default:
       return state;
