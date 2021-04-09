@@ -39,7 +39,7 @@ const BooksCardComponent = (props) => {
           add();
         } else {
           props.setAlertMessage(
-            "5 different books in in the cart. You cannot select more than 5 different books."
+            "5 different books is in the cart. You cannot select more than 5 different books."
           );
           props.setAlertVisible(true);
         }
