@@ -3,10 +3,25 @@
   max-width: 20vw;
 }
 
-.book-card-collpase-button {
+.book-card-collpase-button,
+.cart-quantity-minus-button,
+.cart-quantity-plus-button {
   cursor: pointer;
 }
 
 .genre-select {
   max-width: 20vw;
+}
+
+.cart {
+  margin-top: 55px;
+}
+
+.cart-image {
+  width: 100%;
+  height: auto;
+}
+
+.cart-quantity-button {
+  font-size: larger;
 }

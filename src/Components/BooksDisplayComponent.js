@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Container, CardDeck, Button, Input } from "reactstrap";
+import { CardDeck, Button, Input } from "reactstrap";
 import { BooksContext } from "../Contexts/BooksContext";
 import { getGenres } from "../Functions/getGenres";
 import BooksCardComponent from "./BooksCardComponent";
@@ -20,12 +20,17 @@ const BooksDisplayComponent = (props) => {
   // Generating the genres options for selecting genre
   useEffect(() => {
     // Generating options from the genres list
-    const genreOptions = genres.map((genre) => {
-      if (genre === "(no genres listed)") return <option>Others</option>;
-      else return <option>{genre}</option>;
+    const genreOptions = genres.map((genre, index) => {
+      if (genre === "(no genres listed)")
+        return <option key={index}>Others</option>;
+      else return <option key={index}>{genre}</option>;
     });
     // Adding option of All Genres to the select
-    genreOptions.unshift(<option value="all-genres">All Genres</option>);
+    genreOptions.unshift(
+      <option key={genres.length} value="all-genres" selected>
+        All Genres
+      </option>
+    );
     setGenreOptions(genreOptions);
   }, [genres]);
 
@@ -54,7 +59,6 @@ const BooksDisplayComponent = (props) => {
 
   //   Generating cards of books in genre
   useEffect(() => {
-    console.log(booksAccordingToGenre);
     const bookCards = booksAccordingToGenre.map((book) => ({
       key: book.id,
       card: (
@@ -67,6 +71,9 @@ const BooksDisplayComponent = (props) => {
           author={book.author}
           genre={book.genre}
           published_date={book.published_date}
+          key={book.id}
+          setAlertVisible={props.setAlertVisible}
+          setAlertMessage={props.setAlertMessage}
         />
       ),
     }));
@@ -143,7 +150,7 @@ const BooksDisplayComponent = (props) => {
   }, [cardDecksShown]);
 
   return (
-    <Container className={props.className}>
+    <div className={props.className}>
       <div>
         <span>Select Genre: </span>
         <Input
@@ -172,7 +179,7 @@ const BooksDisplayComponent = (props) => {
         {/* Div for bottom of the page reference */}
         <div style={{ float: "left", clear: "both" }} ref={pageEnd}></div>
       </div>
-    </Container>
+    </div>
   );
 };
 
