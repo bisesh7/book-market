@@ -11,11 +11,13 @@ const CartComponent = (props) => {
   const [cartListGroupItems, setCartListGroupItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  // Creating the list group items of the books in cart
   useEffect(() => {
     let cartListGroupItems = [];
     let totalAmount = 0;
     if (cart.books.length) {
       cart.books.forEach((bookInCart, index) => {
+        // Finding the book with the id
         const book = books.books.find(
           (bookInBookList) => bookInBookList.id === bookInCart.bookId
         );

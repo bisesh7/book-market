@@ -12,6 +12,8 @@ import { removeFromBooks } from "../Actions/BookActions";
 import { addToCart } from "../Actions/CartActions";
 import { BooksContext } from "../Contexts/BooksContext";
 import { CartContext } from "../Contexts/CartContext";
+import { getFormattedDate } from "../Functions/getFormattedDate";
+import { getFormattedGenre } from "../Functions/getFormattedGenre";
 import { getNPRFromDollar } from "../Functions/getNPRFromDollar";
 
 const BooksCardComponent = (props) => {
@@ -22,16 +24,6 @@ const BooksCardComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
-  //   getting the date formatted in mm-dd-yy
-  const getFormattedDate = (date) => {
-    const dateObj = new Date(date);
-    // Since month starts from 0 in js
-    const month = dateObj.getMonth() + 1;
-    const day = dateObj.getDate();
-    const year = dateObj.getFullYear();
-    return month + "-" + day + "-" + year;
-  };
 
   const addToCardButtonHandler = (e) => {
     e.preventDefault();
@@ -55,17 +47,6 @@ const BooksCardComponent = (props) => {
         add();
       }
     }
-  };
-
-  // If there are multiple genres then we need to format them
-  const getFormattedGenre = (unformattedGenre) => {
-    const genres = unformattedGenre.split("|");
-    let formattedGenre = "";
-    genres.forEach((genre, index) => {
-      if (index !== genres.length - 1) formattedGenre += genre + ", ";
-      else formattedGenre += genre;
-    });
-    return formattedGenre;
   };
 
   return (
@@ -100,7 +81,8 @@ const BooksCardComponent = (props) => {
               {getNPRFromDollar(props.price.substring(1, props.price.length))}{" "}
               <br />
               Stock: {props.stock} <br />
-              Date Created: {getFormattedDate(props.published_date)} <br />
+              Date Created: <br />
+              {getFormattedDate(props.published_date)} <br />
               Author: {props.author}
               <br />
               Genre:{" "}

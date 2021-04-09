@@ -1,3 +1,7 @@
+/**
+ * @param   books
+ * @returns the list of all the genres in the book list
+ */
 export const getGenres = (books) => {
   // Get only genres from the books list with different genres
   const genresInBooksList = books.map((book) => book.genre);
@@ -13,7 +17,7 @@ export const getGenres = (books) => {
   };
 
   genresInBooksList.forEach((genreInBooksList) => {
-    //   If a bokk has multiple genres, genres are seperated with |
+    //   If a book has multiple genres, genres are seperated with |
     if (genreInBooksList.includes("|")) {
       const splittedGenres = genreInBooksList.split("|");
       //   We add each splitted genres to the genre set

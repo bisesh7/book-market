@@ -7,16 +7,16 @@ import BooksCardComponent from "./BooksCardComponent";
 const BooksDisplayComponent = (props) => {
   // Getting the books from context
   const { books } = useContext(BooksContext);
+  // Contains the books of particular genre
   const [booksAccordingToGenre, setBooksAccordingToGenre] = useState(
     books.books
   );
+  // List of all the genres
   const [genres, setGenres] = useState([]);
+  // The options of genre in select tag
   const [genreOptions, setGenreOptions] = useState(null);
+  // The genre currently being selected
   const [genreSelected, setGenreSelected] = useState("all-genres");
-
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
 
   // Set the genres
   useEffect(() => {
@@ -86,6 +86,7 @@ const BooksDisplayComponent = (props) => {
     setBookCards(bookCards);
   }, [booksAccordingToGenre]);
 
+  // Decks of book cards
   const [cardDecks, setCardDecks] = useState([]);
 
   //   Creating card deck so that the cards will be displayed in a grid
@@ -124,8 +125,10 @@ const BooksDisplayComponent = (props) => {
 
   //   Number of card deck initially shown
   const [numberOfCardDecks, setNumberOfCardDecks] = useState(3);
+  // Card deck currently in the DOM
   const [cardDecksShown, setCardDecksShown] = useState([]);
 
+  // Showing only few card decks. This is done for UX and UI
   useEffect(() => {
     if (cardDecks) {
       setCardDecksShown(cardDecks.slice(0, numberOfCardDecks));

@@ -16,6 +16,7 @@ const HomeComponent = (props) => {
     window.scrollTo(0, 0);
   };
 
+  // Whenever alert is shown we slide to the top, since alert is in the top
   useEffect(() => {
     if (alertVisible) {
       scrollToAlert();
