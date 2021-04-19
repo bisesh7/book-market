@@ -1,3 +1,5 @@
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import {
   Card,
@@ -105,8 +107,9 @@ const BooksCardComponent = (props) => {
           color="secondary"
           disabled={props.stock <= 0}
           onClick={addToCardButtonHandler}
+          block
         >
-          Add to cart
+          <FontAwesomeIcon icon={faCartPlus} />
         </Button>
       </CardBody>
     </Card>
