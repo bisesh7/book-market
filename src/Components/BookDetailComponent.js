@@ -68,10 +68,10 @@ const BookDetailComponent = (props) => {
       {book ? (
         <div>
           <Row>
-            <Col md="4">
+            <Col md="6">
               <img src={book.image} className="book-image" />
             </Col>
-            <Col md="8">
+            <Col md="6">
               <div>
                 <strong>{book["name "]}</strong> <br />
                 <span className="text-muted">by</span> {book.author} <br />
