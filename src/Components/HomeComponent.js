@@ -25,7 +25,7 @@ const HomeComponent = (props) => {
 
   return (
     <div>
-      <NavbarComponent />
+      <NavbarComponent {...props} />
       <Container>
         <Alert color="danger" isOpen={alertVisible} toggle={onAlertDismiss}>
           {alertMessage}

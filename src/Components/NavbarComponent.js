@@ -10,7 +10,7 @@ import {
   Container,
 } from "reactstrap";
 
-const NavbarComponent = () => {
+const NavbarComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -19,7 +19,15 @@ const NavbarComponent = () => {
     <div>
       <Navbar color="light" light expand="md">
         <Container>
-          <NavbarBrand href="/">Book-Market</NavbarBrand>
+          <NavbarBrand
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              props.history.push("/");
+            }}
+          >
+            Book-Market
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>

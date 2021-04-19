@@ -10,7 +10,7 @@ const BookDetailComponent = (props) => {
 
   return (
     <div>
-      <NavbarComponent />
+      <NavbarComponent {...props} />
       <Container>
         <Row>
           <Col md="9">Book Detail</Col>
