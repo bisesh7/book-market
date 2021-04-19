@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ListGroup } from "reactstrap";
+import { Alert, ListGroup } from "reactstrap";
 import { CartContext } from "../Contexts/CartContext";
 import { BooksContext } from "../Contexts/BooksContext";
 import CartListGroupItem from "./CartListGroupItemComponent";
@@ -49,7 +49,9 @@ const CartComponent = (props) => {
         <small className="float-right">
           Total: {getNPRFromDollar(totalAmount)}
         </small>
-      ) : null}
+      ) : (
+        <Alert color="dark">Cart is empty</Alert>
+      )}
     </div>
   );
 };

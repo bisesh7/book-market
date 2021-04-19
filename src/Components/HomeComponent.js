@@ -4,6 +4,8 @@ import BooksDisplayComponent from "./BooksDisplayComponent";
 import CartComponent from "./CartComponent";
 import NavbarComponent from "./NavbarComponent";
 import { Alert } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const HomeComponent = (props) => {
   // Alert
@@ -40,7 +42,9 @@ const HomeComponent = (props) => {
             />
           </Col>
           <Col md="3">
-            <strong>Cart</strong>
+            <strong className="cart-text">
+              <FontAwesomeIcon icon={faShoppingCart} /> Cart
+            </strong>
             <div className="sticky-top cart">
               <CartComponent {...props} />
             </div>

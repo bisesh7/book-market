@@ -1,5 +1,14 @@
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { CardDeck, Button, Input } from "reactstrap";
+import {
+  CardDeck,
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+} from "reactstrap";
 import { BooksContext } from "../Contexts/BooksContext";
 import { getGenres } from "../Functions/getGenres";
 import BooksCardComponent from "./BooksCardComponent";
@@ -162,17 +171,23 @@ const BooksDisplayComponent = (props) => {
   return (
     <div className={props.className}>
       <div>
-        <span>Select Genre: </span>
-        <Input
-          onChange={(e) => {
-            setGenreSelected(e.target.value);
-          }}
-          type="select"
-          className="genre-select"
-          defaultValue="all-genres"
-        >
-          {genreOptions}
-        </Input>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>
+              <FontAwesomeIcon icon={faFilter} />
+            </InputGroupText>
+          </InputGroupAddon>
+          <Input
+            onChange={(e) => {
+              setGenreSelected(e.target.value);
+            }}
+            type="select"
+            className="genre-select"
+            defaultValue="all-genres"
+          >
+            {genreOptions}
+          </Input>
+        </InputGroup>
       </div>
 
       <div className={props.className}>{cardDecksShown}</div>
