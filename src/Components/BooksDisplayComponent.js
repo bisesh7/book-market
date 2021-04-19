@@ -135,6 +135,7 @@ const BooksDisplayComponent = (props) => {
 
   //   Number of card deck initially shown
   const [numberOfCardDecks, setNumberOfCardDecks] = useState(3);
+  const [cardDeskAdded, setCardDeskAdded] = useState(false);
   // Card deck currently in the DOM
   const [cardDecksShown, setCardDecksShown] = useState([]);
 
@@ -158,15 +159,11 @@ const BooksDisplayComponent = (props) => {
     e.preventDefault();
     if (numberOfCardDecks !== cardDecks.length) {
       setNumberOfCardDecks(numberOfCardDecks + 1);
+      setTimeout(() => {
+        scrollToBottom();
+      }, 200);
     }
   };
-
-  //   Whenever new deck of card is added we slide to the bottom of the page
-  useEffect(() => {
-    // We only slide to the bottom when we add a deck to the current decks
-    // When we add to the current decks them currrent decks will be more than 3
-    if (cardDecksShown.length > 3) scrollToBottom();
-  }, [cardDecksShown]);
 
   return (
     <div className={props.className}>
