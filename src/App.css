@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.cart-quantity-minus-button:hover,
+.cart-quantity-plus-button:hover {
+  opacity: 0.5;
+}
+
 .book-card-image {
   cursor: pointer;
 }
@@ -32,7 +37,8 @@
 }
 
 .disabled-button {
-  color: silver;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .cart {

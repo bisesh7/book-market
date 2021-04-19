@@ -51,7 +51,7 @@ const CartListGroupItem = (props) => {
                 <span
                   className={
                     props.stock === 0
-                      ? "cart-quantity-plus-button disabled-button"
+                      ? "disabled-button"
                       : "cart-quantity-plus-button"
                   }
                   onClick={quantityIncreaseHandler}
