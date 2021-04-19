@@ -80,6 +80,7 @@ const BooksDisplayComponent = (props) => {
           key={book.id}
           setAlertVisible={props.setAlertVisible}
           setAlertMessage={props.setAlertMessage}
+          {...props}
         />
       ),
     }));

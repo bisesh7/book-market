@@ -9,6 +9,14 @@
   cursor: pointer;
 }
 
+.book-card-image {
+  cursor: pointer;
+}
+
+.book-card-image:hover {
+  opacity: 0.5;
+}
+
 .genre-select {
   max-width: 20vw;
 }

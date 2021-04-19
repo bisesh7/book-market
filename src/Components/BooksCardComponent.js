@@ -49,6 +49,11 @@ const BooksCardComponent = (props) => {
     }
   };
 
+  const cardImageClickHandler = (e) => {
+    e.preventDefault();
+    props.history.push(`/book/${props.id}`);
+  };
+
   return (
     <Card className="book-card" key={props.id}>
       <CardImg
@@ -57,6 +62,7 @@ const BooksCardComponent = (props) => {
         src={props.image}
         alt={props.title}
         className="book-card-image"
+        onClick={cardImageClickHandler}
       />
       <CardBody>
         <CardTitle tag="h5">
