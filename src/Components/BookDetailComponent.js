@@ -10,6 +10,8 @@ import NavbarComponent from "./NavbarComponent";
 import { addToCart } from "../Actions/CartActions";
 import { CartContext } from "../Contexts/CartContext";
 import { removeFromBooks } from "../Actions/BookActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 const BookDetailComponent = (props) => {
   const [bookId, setBookId] = useState();
@@ -90,9 +92,9 @@ const BookDetailComponent = (props) => {
                   color="secondary"
                   disabled={book.stock <= 0}
                   onClick={addToCardButtonHandler}
-                  className="mt-3"
+                  className="mt-3 px-4"
                 >
-                  Add to cart
+                  <FontAwesomeIcon icon={faCartPlus} />
                 </Button>
               </div>
             </Col>
